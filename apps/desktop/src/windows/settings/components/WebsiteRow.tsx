@@ -67,7 +67,7 @@ export function WebsiteRow({
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: website.id });
 
-  const label = website.name === '' ? 'Untitled site' : website.name;
+  const label = website.name === '' ? '未命名站点' : website.name;
   const seeded = getWebsiteSeed(website.id) !== null;
   const shown = resolveWebsite(website);
   const followsDefaults = seeded && website.useDefaults;
@@ -109,9 +109,9 @@ export function WebsiteRow({
 
   const handleRemove = useCallback(() => {
     showConfirmDialog({
-      title: `Remove ${label}?`,
-      description: 'The site is dropped from the catalogue and from the menu bar.',
-      confirmText: 'Remove',
+      title: `删除${label}？`,
+      description: '该站点将从站点列表和菜单栏中移除。',
+      confirmText: '删除',
       variant: 'destructive',
       onConfirm: () => onRemove(website.id),
     }).catch((error: unknown) => {
@@ -131,7 +131,7 @@ export function WebsiteRow({
       <div className="flex items-center gap-1 p-2">
         <button
           type="button"
-          aria-label={`Reorder ${label}`}
+          aria-label={`调整${label}的顺序`}
           className="cursor-grab touch-none rounded p-1 text-muted-foreground hover:text-foreground"
           {...attributes}
           {...listeners}
@@ -156,7 +156,7 @@ export function WebsiteRow({
         </button>
 
         <Switch
-          aria-label={`Enable ${label}`}
+          aria-label={`启用${label}`}
           checked={website.enabled}
           onCheckedChange={handleToggleEnabled}
         />
@@ -174,13 +174,11 @@ export function WebsiteRow({
                     onCheckedChange={handleToggleUseDefaults}
                   />
                   <Label htmlFor={`${website.id}-use-defaults`}>
-                    Use the built-in settings
+                    使用内置设置
                   </Label>
                 </div>
                 <span className="text-xs text-muted-foreground">
-                  Follows the definition that ships with the app, so a selector fixed in
-                  an update arrives on its own. Anything typed here is kept, and the
-                  fields come back when this is off.
+                  跟随应用自带的站点定义，更新修复的选择器会自动生效。此处输入的内容会被保留，关闭此开关后会恢复显示。
                 </span>
               </div>
             </div>
@@ -190,7 +188,7 @@ export function WebsiteRow({
             <>
               <Field
                 id={`${website.id}-name`}
-                label="Name"
+                label="名称"
                 value={shown.name}
                 placeholder="claude"
                 onChange={handleChangeName}
@@ -204,14 +202,14 @@ export function WebsiteRow({
               />
               <Field
                 id={`${website.id}-input-selector`}
-                label="Input selector"
+                label="输入框选择器"
                 value={shown.inputSelector}
                 placeholder="textarea"
                 onChange={handleChangeInputSelector}
               />
               <Field
                 id={`${website.id}-button-selector`}
-                label="Submit button selector"
+                label="发送按钮选择器"
                 value={shown.buttonSelector}
                 placeholder='button[type="submit"]'
                 onChange={handleChangeButtonSelector}
@@ -227,7 +225,7 @@ export function WebsiteRow({
               onClick={handleRemove}
             >
               <Trash2 />
-              Remove site
+              删除站点
             </Button>
           </div>
         </div>

@@ -56,29 +56,29 @@ export function BrowserMemoryOptions({ settings, onChange }: BrowserMemoryOption
     <div className="ml-4 flex flex-col gap-4 border-l pl-4">
       <BrowserMemoryOption
         id="disable-back-forward-cache"
-        label="Disable Back/Forward cache"
-        description="Keeps an extra page from staying in memory for browser Back navigation."
+        label="禁用前进/后退缓存"
+        description="避免浏览器为后退导航在内存中多保留一个页面."
         checked={settings.disableBackForwardCache}
         onCheckedChange={handleBackForwardCacheChange}
       />
       <BrowserMemoryOption
         id="enable-low-end-device-mode"
-        label="Enable low-end device mode"
-        description="Uses Chromium's smaller JavaScript, image, and tile-cache budgets."
+        label="启用低配设备模式"
+        description="使用 Chromium 更小的 JavaScript、图片和瓦片缓存预算."
         checked={settings.enableLowEndDeviceMode}
         onCheckedChange={handleLowEndDeviceModeChange}
       />
       <BrowserMemoryOption
         id="process-per-site"
-        label="Share one renderer per site"
-        description="Lets the same chat site reuse its renderer across app windows."
+        label="每个站点共用一个渲染进程"
+        description="让同一聊天站点在多个应用窗口间复用渲染进程."
         checked={settings.processPerSite}
         onCheckedChange={handleProcessPerSiteChange}
       />
       <BrowserMemoryOption
         id="optimize-for-size"
-        label="Optimise JavaScript for size"
-        description="Tells V8 to favour a smaller memory footprint over peak speed."
+        label="优化 JavaScript 内存占用"
+        description="让 V8 优先减小内存占用，而非追求最高速度."
         checked={settings.optimizeForSize}
         onCheckedChange={handleOptimizeForSizeChange}
       />

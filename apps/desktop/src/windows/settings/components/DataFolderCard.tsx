@@ -31,15 +31,15 @@ export function DataFolderCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Data folder</CardTitle>
+        <CardTitle>数据文件夹</CardTitle>
         <CardDescription>
-          Where Multi Mind keeps <code>settings.json</code> and{' '}
-          <code>search.sqlite3</code>. Moving it takes the current data along.
+          Multi Mind 存放 <code>settings.json</code> 和{' '}
+          <code>search.sqlite3</code> 的位置。移动后当前数据会一并迁移。
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="data-directory">Folder</Label>
+          <Label htmlFor="data-directory">文件夹</Label>
           <div className="flex gap-2">
             <Input
               id="data-directory"
@@ -51,7 +51,7 @@ export function DataFolderCard() {
             />
             <Button variant="outline" disabled={busy} onClick={browse}>
               <FolderOpen />
-              Browse
+              浏览
             </Button>
           </div>
         </div>
@@ -59,12 +59,12 @@ export function DataFolderCard() {
         <div className="flex items-center gap-2">
           <Button disabled={busy} onClick={save}>
             <Save />
-            Save location
+            保存位置
           </Button>
           {location !== null && !location.isDefault && (
             <Button variant="ghost" disabled={busy} onClick={useDefault}>
               <RotateCcw />
-              Use default
+              使用默认
             </Button>
           )}
         </div>
@@ -84,7 +84,7 @@ export function DataFolderCard() {
         {location !== null && (
           <p className="font-mono text-xs break-all text-muted-foreground">
             {location.directory}
-            {location.isDefault && ' (default)'}
+            {location.isDefault && '（默认）'}
           </p>
         )}
       </CardContent>

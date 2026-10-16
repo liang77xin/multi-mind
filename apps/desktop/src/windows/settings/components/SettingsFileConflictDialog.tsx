@@ -47,35 +47,31 @@ export function SettingsFileConflictDialog({
     >
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>That folder already has a settings file</DialogTitle>
+          <DialogTitle>该文件夹已有设置文件</DialogTitle>
           <DialogDescription>
-            <span className="font-mono break-all">{directory}</span> already has its own{' '}
-            <code>settings.json</code>. Only one set of settings can be kept.
+            <span className="font-mono break-all">{directory}</span> 已有自己的{' '}
+            <code>settings.json</code>，只能保留一套设置。
           </DialogDescription>
         </DialogHeader>
         <DialogBody>
           <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
             <li>
-              <strong className="text-foreground">Keep those settings</strong> — the app
-              starts using the file already in that folder. The settings you are using now
-              are discarded.
+              <strong className="text-foreground">保留这些设置</strong> — 应用将使用该文件夹中已有的文件，当前使用的设置将被丢弃。
             </li>
             <li>
-              <strong className="text-foreground">Overwrite them</strong> — the settings
-              you are using now are written over that file. The settings in that folder
-              are lost.
+              <strong className="text-foreground">覆盖它们</strong> — 当前使用的设置将覆盖写入该文件，该文件夹中的设置将丢失。
             </li>
           </ul>
         </DialogBody>
         <DialogFooter>
           <Button variant="ghost" onClick={() => answer(null)}>
-            Cancel
+            取消
           </Button>
           <Button variant="outline" onClick={() => answer('adopt')}>
-            Keep those settings
+            保留这些设置
           </Button>
           <Button variant="destructive" onClick={() => answer('replace')}>
-            Overwrite them
+            覆盖它们
           </Button>
         </DialogFooter>
       </DialogContent>

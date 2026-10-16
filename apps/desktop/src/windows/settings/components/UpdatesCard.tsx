@@ -30,19 +30,17 @@ export function UpdatesCard({ settings, onChange }: UpdatesCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Updates</CardTitle>
+        <CardTitle>更新</CardTitle>
         <CardDescription>
-          Whether Multi Mind looks for a newer release of itself when it starts.
+          启动时是否检查 Multi Mind 是否有新版本。
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="auto-update">Check for updates automatically</Label>
+            <Label htmlFor="auto-update">自动检查更新</Label>
             <span className="text-xs text-muted-foreground">
-              Asks GitHub for the latest release on startup and offers to install it.
-              Nothing but the version is sent. Switched off, the app makes no network call
-              of its own.
+              启动时向 GitHub 查询最新版本并提示安装。只会发送版本号。关闭后，应用不会主动发起任何网络请求。
             </span>
           </div>
           <Switch

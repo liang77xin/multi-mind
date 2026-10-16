@@ -15,7 +15,7 @@ import { BrowserMemoryOptions } from './BrowserMemoryOptions';
 const IDLE_MEMORY_TRIM_DELAY_SELECT_OPTIONS = IDLE_MEMORY_TRIM_DELAY_OPTIONS.map(
   (seconds) => ({
     value: String(seconds),
-    label: `${seconds} seconds`,
+    label: `${seconds} 秒`,
   }),
 );
 
@@ -52,19 +52,18 @@ export function MemoryCard({ settings, onChange }: MemoryCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>System Memory Usage</CardTitle>
+        <CardTitle>系统内存占用</CardTitle>
         <CardDescription>
-          Keep several AI chat sites open while limiting the caches they retain in the
-          background.
+          同时打开多个 AI 聊天站点，并限制它们在后台保留的缓存。
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="browser-memory-saving">Use memory-saving browser mode</Label>
+            <Label htmlFor="browser-memory-saving">使用省内存浏览器模式</Label>
             <span className="text-xs text-muted-foreground">
-              On Windows, lowers Chromium&apos;s cache and JavaScript memory budgets.
-              Restart Multi Mind after changing this setting.
+              在 Windows 上降低 Chromium 的缓存和 JavaScript 内存占用。
+              更改此设置后请重启 Multi Mind。
             </span>
           </div>
           <Switch
@@ -80,10 +79,10 @@ export function MemoryCard({ settings, onChange }: MemoryCardProps) {
 
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="trim-inactive-webviews">Trim inactive chat sites</Label>
+            <Label htmlFor="trim-inactive-webviews">清理未使用的聊天站点</Label>
             <span className="text-xs text-muted-foreground">
-              On Windows, asks WebView2 to release rebuildable caches when every window
-              showing a chat site is inactive.
+              在 Windows 上，当所有显示聊天站点的窗口都处于未使用状态时，要求 WebView2
+              释放可重建的缓存。
             </span>
           </div>
           <Switch
@@ -94,7 +93,7 @@ export function MemoryCard({ settings, onChange }: MemoryCardProps) {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          <Label htmlFor="idle-memory-trim-delay">Trim inactive sites after</Label>
+          <Label htmlFor="idle-memory-trim-delay">超过以下时间后清理未使用的站点</Label>
           <Select
             id="idle-memory-trim-delay"
             className="w-36"

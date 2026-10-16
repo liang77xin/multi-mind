@@ -64,19 +64,17 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Prompt box</CardTitle>
+        <CardTitle>输入框</CardTitle>
         <CardDescription>
-          How much of the main window the prompt box takes up, as a percentage of its
-          height.
+          输入框占主窗口高度的百分比。
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="prompt-editor">Editor</Label>
+            <Label htmlFor="prompt-editor">编辑器</Label>
             <span className="text-xs text-muted-foreground">
-              Markdown gives the prompt box highlighting, lists that carry on by
-              themselves, and the usual formatting shortcuts.
+              Markdown 可为输入框提供高亮、自动延续的列表以及常用格式快捷键。
             </span>
           </div>
           <Select
@@ -89,7 +87,7 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          <Label htmlFor="textbox-size">Text box size</Label>
+          <Label htmlFor="textbox-size">输入框大小</Label>
           <Select
             id="textbox-size"
             className="w-32"
@@ -101,9 +99,9 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
 
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="auto-shrink">Auto shrink</Label>
+            <Label htmlFor="auto-shrink">自动收缩</Label>
             <span className="text-xs text-muted-foreground">
-              Collapse the prompt box while it is empty.
+              输入框为空时将其收起。
             </span>
           </div>
           <Switch
@@ -114,7 +112,7 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          <Label htmlFor="auto-shrink-size">Auto shrink size</Label>
+          <Label htmlFor="auto-shrink-size">自动收缩大小</Label>
           <Select
             id="auto-shrink-size"
             className="w-32"

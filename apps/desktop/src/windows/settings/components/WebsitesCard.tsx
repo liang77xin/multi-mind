@@ -96,22 +96,21 @@ export function WebsitesCard({ settings, onChange }: WebsitesCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Sites</CardTitle>
+        <CardTitle>站点</CardTitle>
         <CardDescription>
-          Drag to reorder. A site that is switched off here is dropped from the main
-          window&apos;s bar, and its browser closes with it.
+          拖动排序。在此关闭的站点会从主窗口的菜单栏中移除，其浏览器窗口也会随之关闭。
         </CardDescription>
         <CardAction>
           <Button variant="outline" size="sm" onClick={handleAddWebsite}>
             <Plus />
-            Add site
+            添加站点
           </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
         {settings.websites.length === 0 ? (
           <p className="py-6 text-center text-sm text-muted-foreground">
-            No sites yet. Add one to give the main window something to prompt.
+            还没有站点。添加一个，让主窗口有可以提问的对象。
           </p>
         ) : (
           <DndContext
