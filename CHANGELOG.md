@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/liang77xin/multi-mind/compare/v1.0.0...v1.0.1) (2026-10-16)
+
+
+### Bug Fixes
+
+* 更新自动更新签名公钥（fork 独立密钥） ([649a75f](https://github.com/liang77xin/multi-mind/commit/649a75f931df5dfff0d034a0a2c9ee5e1045818c))
+
 # 1.0.0 (2026-10-16)
 
 
