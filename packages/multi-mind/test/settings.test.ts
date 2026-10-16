@@ -129,8 +129,8 @@ describe('updateWebsite', () => {
   it('applies the patch to the matching site only', () => {
     const settings = updateWebsite(makeSettings(), 'claude', { name: 'renamed' });
 
-    expect(settings.websites[0]?.name).toBe('renamed');
-    expect(settings.websites[1]?.name).toBe('chatgpt');
+    expect(settings.websites.find((site) => site.id === 'claude')?.name).toBe('renamed');
+    expect(settings.websites.find((site) => site.id === 'chatgpt')?.name).toBe('chatgpt');
   });
 
   it('keeps the id, so an open browser stays wired up', () => {
