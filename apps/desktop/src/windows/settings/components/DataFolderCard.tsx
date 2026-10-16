@@ -33,8 +33,8 @@ export function DataFolderCard() {
       <CardHeader>
         <CardTitle>数据文件夹</CardTitle>
         <CardDescription>
-          Multi Mind 存放 <code>settings.json</code> 和{' '}
-          <code>search.sqlite3</code> 的位置。移动后当前数据会一并迁移。
+          Multi Mind 存放 <code>settings.json</code> 和 <code>search.sqlite3</code>{' '}
+          的位置。移动后当前数据会一并迁移。
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">

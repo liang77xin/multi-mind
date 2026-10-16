@@ -112,6 +112,7 @@ export function WebsiteRow({
       title: `删除${label}？`,
       description: '该站点将从站点列表和菜单栏中移除。',
       confirmText: '删除',
+      cancelText: '取消',
       variant: 'destructive',
       onConfirm: () => onRemove(website.id),
     }).catch((error: unknown) => {
@@ -173,9 +174,7 @@ export function WebsiteRow({
                     checked={website.useDefaults}
                     onCheckedChange={handleToggleUseDefaults}
                   />
-                  <Label htmlFor={`${website.id}-use-defaults`}>
-                    使用内置设置
-                  </Label>
+                  <Label htmlFor={`${website.id}-use-defaults`}>使用内置设置</Label>
                 </div>
                 <span className="text-xs text-muted-foreground">
                   跟随应用自带的站点定义，更新修复的选择器会自动生效。此处输入的内容会被保留，关闭此开关后会恢复显示。

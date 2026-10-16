@@ -31,16 +31,15 @@ export function UpdatesCard({ settings, onChange }: UpdatesCardProps) {
     <Card>
       <CardHeader>
         <CardTitle>更新</CardTitle>
-        <CardDescription>
-          启动时是否检查 Multi Mind 是否有新版本。
-        </CardDescription>
+        <CardDescription>启动时是否检查 Multi Mind 是否有新版本。</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
             <Label htmlFor="auto-update">自动检查更新</Label>
             <span className="text-xs text-muted-foreground">
-              启动时向 GitHub 查询最新版本并提示安装。只会发送版本号。关闭后，应用不会主动发起任何网络请求。
+              启动时向 GitHub
+              查询最新版本并提示安装。只会发送版本号。关闭后，应用不会主动发起任何网络请求。
             </span>
           </div>
           <Switch

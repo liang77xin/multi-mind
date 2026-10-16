@@ -57,6 +57,7 @@ async function applyWithPrompts(
       title: '该文件夹不存在',
       description: `${result.directory} 还不存在。创建该文件夹并将设置文件移入吗？`,
       confirmText: '创建文件夹',
+      cancelText: '取消',
     });
 
     return confirmed ? applyWithPrompts(invoke, { ...request, create: true }) : null;

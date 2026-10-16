@@ -62,8 +62,8 @@ export function MemoryCard({ settings, onChange }: MemoryCardProps) {
           <div className="flex flex-col gap-1">
             <Label htmlFor="browser-memory-saving">使用省内存浏览器模式</Label>
             <span className="text-xs text-muted-foreground">
-              在 Windows 上降低 Chromium 的缓存和 JavaScript 内存占用。
-              更改此设置后请重启 Multi Mind。
+              在 Windows 上降低 Chromium 的缓存和 JavaScript 内存占用。 更改此设置后请重启
+              Multi Mind。
             </span>
           </div>
           <Switch

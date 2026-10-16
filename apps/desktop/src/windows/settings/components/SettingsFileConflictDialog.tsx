@@ -56,10 +56,12 @@ export function SettingsFileConflictDialog({
         <DialogBody>
           <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
             <li>
-              <strong className="text-foreground">保留这些设置</strong> — 应用将使用该文件夹中已有的文件，当前使用的设置将被丢弃。
+              <strong className="text-foreground">保留这些设置</strong> —
+              应用将使用该文件夹中已有的文件，当前使用的设置将被丢弃。
             </li>
             <li>
-              <strong className="text-foreground">覆盖它们</strong> — 当前使用的设置将覆盖写入该文件，该文件夹中的设置将丢失。
+              <strong className="text-foreground">覆盖它们</strong> —
+              当前使用的设置将覆盖写入该文件，该文件夹中的设置将丢失。
             </li>
           </ul>
         </DialogBody>

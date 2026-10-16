@@ -65,9 +65,7 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
     <Card>
       <CardHeader>
         <CardTitle>输入框</CardTitle>
-        <CardDescription>
-          输入框占主窗口高度的百分比。
-        </CardDescription>
+        <CardDescription>输入框占主窗口高度的百分比。</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
@@ -100,9 +98,7 @@ export function PromptBoxCard({ settings, onChange }: PromptBoxCardProps) {
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
             <Label htmlFor="auto-shrink">自动收缩</Label>
-            <span className="text-xs text-muted-foreground">
-              输入框为空时将其收起。
-            </span>
+            <span className="text-xs text-muted-foreground">输入框为空时将其收起。</span>
           </div>
           <Switch
             id="auto-shrink"
