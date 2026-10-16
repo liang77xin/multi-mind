@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Multi Mind",
-  "version": "1.0.0",
+  "version": "1.16.0",
   "identifier": "com.ccpu.multi-mind",
   "build": {
     "beforeDevCommand": "pnpm dev",
@@ -36,7 +36,7 @@
       "endpoints": [
         "https://github.com/liang77xin/multi-mind/releases/latest/download/latest.json"
       ],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFERTU3QUJCMDc4QjVERDYKUldUV1hZc0h1M3JsSGZHQVJ2SjNCUitoTmJlaTRnWFB5UDY5Q3NpMkxXc1BYQjNhakExNHA2bmUK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDZEMDA0MDYyN0VCNEY1MEMKUldRTTliUitZa0FBYll4bDRGVTcwQUdFVVVXMjlQV3Z4eWVZbFJNeUI5N2hpaTdYY3BIVmJQdGwK"
     }
   }
 }
