@@ -11,8 +11,8 @@ import { createId } from './ids';
 export type PromptLocation = 'end' | 'start';
 
 export const PROMPT_LOCATION_OPTIONS = [
-  { value: 'start', label: 'Before the prompt' },
-  { value: 'end', label: 'After the prompt' },
+  { value: 'start', label: '加在提示词前面' },
+  { value: 'end', label: '加在提示词后面' },
 ] as const satisfies readonly { value: PromptLocation; label: string }[];
 
 export interface PromptPreset {

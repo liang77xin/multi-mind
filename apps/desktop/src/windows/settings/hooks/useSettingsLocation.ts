@@ -54,9 +54,9 @@ async function applyWithPrompts(
 
   if (result.status === 'missing') {
     const confirmed = await showConfirmDialog({
-      title: 'That folder does not exist',
-      description: `${result.directory} is not there yet. Create it and move the settings file into it?`,
-      confirmText: 'Create folder',
+      title: '该文件夹不存在',
+      description: `${result.directory} 还不存在。创建该文件夹并将设置文件移入吗？`,
+      confirmText: '创建文件夹',
     });
 
     return confirmed ? applyWithPrompts(invoke, { ...request, create: true }) : null;
@@ -127,20 +127,20 @@ export function useSettingsLocation(): UseSettingsLocationResult {
           setStatus({
             tone: 'success',
             message: adopted
-              ? 'Now using the settings file that was already in that folder.'
-              : 'Your data has been moved to that folder.',
+              ? '现在使用该文件夹中已有的设置文件。'
+              : '你的数据已移动到该文件夹。',
           });
           return;
         }
 
         setStatus({
           tone: 'error',
-          message: result.message ?? 'That folder could not be used.',
+          message: result.message ?? '该文件夹无法使用.',
         });
       })
       .catch((error: unknown) => {
         console.error('Failed to move the data folder:', error);
-        setStatus({ tone: 'error', message: 'Your data could not be moved.' });
+        setStatus({ tone: 'error', message: '你的数据无法移动。' });
       })
       .finally(() => {
         setBusy(false);

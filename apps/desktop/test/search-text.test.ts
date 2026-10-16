@@ -72,10 +72,10 @@ describe('search text', () => {
   it('formats the age of a SQLite UTC timestamp', () => {
     const now = Date.parse('2026-09-26T12:00:00Z');
 
-    expect(formatAge('2026-09-26 11:59:40', now)).toBe('just now');
-    expect(formatAge('2026-09-26 11:15:00', now)).toBe('45m ago');
-    expect(formatAge('2026-09-26 07:00:00', now)).toBe('5h ago');
-    expect(formatAge('2026-09-23 12:00:00', now)).toBe('3d ago');
+    expect(formatAge('2026-09-26 11:59:40', now)).toBe('刚刚');
+    expect(formatAge('2026-09-26 11:15:00', now)).toBe('45分钟前');
+    expect(formatAge('2026-09-26 07:00:00', now)).toBe('5小时前');
+    expect(formatAge('2026-09-23 12:00:00', now)).toBe('3天前');
     expect(formatAge('not a date', now)).toBe('');
   });
 });

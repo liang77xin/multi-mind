@@ -200,14 +200,14 @@ describe('promptPanel', () => {
       renderPanel();
 
       expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'New prompt' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: '新建提示词' })).toBeInTheDocument();
     });
 
     it('adds a blank preset from the row and opens its editor beside it', async () => {
       const user = userEvent.setup();
       const { props, rerender } = renderPanel({ presets });
 
-      await user.click(screen.getByRole('button', { name: 'New prompt' }));
+      await user.click(screen.getByRole('button', { name: '新建提示词' }));
 
       expect(props.onAddPreset).toHaveBeenCalledWith(
         expect.objectContaining({ name: '', value: '', location: 'end' }),
@@ -219,7 +219,7 @@ describe('promptPanel', () => {
         </OverlayProvider>,
       );
 
-      await user.type(await screen.findByLabelText('Name'), 'French');
+      await user.type(await screen.findByLabelText('名称'), 'French');
       await user.keyboard('{Escape}');
 
       expect(screen.queryByLabelText('Name')).not.toBeInTheDocument();
@@ -298,8 +298,8 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets });
 
       await user.click(screen.getByRole('button', { name: 'English' }));
-      await user.clear(screen.getByLabelText('Text'));
-      await user.type(screen.getByLabelText('Text'), 'Answer in French.');
+      await user.clear(screen.getByLabelText('文本'));
+      await user.type(screen.getByLabelText('文本'), 'Answer in French.');
 
       expect(screen.queryByRole('button', { name: 'Save' })).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: 'Cancel' })).not.toBeInTheDocument();
@@ -322,7 +322,7 @@ describe('promptPanel', () => {
 
       await user.click(screen.getByRole('button', { name: 'English' }));
       await user.click(screen.getByRole('combobox'));
-      await user.click(screen.getByRole('option', { name: 'Before the prompt' }));
+      await user.click(screen.getByRole('option', { name: '加在提示词前面' }));
 
       await waitFor(() => {
         expect(props.onChangePreset).toHaveBeenCalledWith(
@@ -337,7 +337,7 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets });
 
       await user.click(screen.getByRole('button', { name: 'English' }));
-      await user.click(screen.getByRole('switch', { name: 'Use once per chat' }));
+      await user.click(screen.getByRole('switch', { name: '每轮对话只用一次' }));
 
       await waitFor(() => {
         expect(props.onChangePreset).toHaveBeenCalledWith(
@@ -352,7 +352,7 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets });
 
       await user.click(screen.getByRole('button', { name: 'English' }));
-      await user.click(screen.getByRole('switch', { name: 'Untick on New Chat' }));
+      await user.click(screen.getByRole('switch', { name: '新对话时取消勾选' }));
 
       await waitFor(() => {
         expect(props.onChangePreset).toHaveBeenCalledWith(
@@ -367,7 +367,7 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets });
 
       await user.click(screen.getByRole('button', { name: 'English' }));
-      await user.click(screen.getByRole('switch', { name: 'Override other prompts' }));
+      await user.click(screen.getByRole('switch', { name: '覆盖其他提示词' }));
 
       await waitFor(() => {
         expect(props.onChangePreset).toHaveBeenCalledWith(
@@ -426,7 +426,7 @@ describe('promptPanel', () => {
       expect(screen.getByRole('checkbox', { name: 'Use English' })).toBeChecked();
       expect(screen.getByRole('button', { name: 'English' })).toHaveClass('opacity-50');
 
-      await user.click(screen.getByRole('button', { name: 'Send English again' }));
+      await user.click(screen.getByRole('button', { name: '再次发送English' }));
 
       expect(props.onReusePreset).toHaveBeenCalledWith('english');
       expect(props.onTogglePreset).not.toHaveBeenCalled();
@@ -439,7 +439,7 @@ describe('promptPanel', () => {
       });
 
       expect(
-        screen.queryByRole('button', { name: 'Send English again' }),
+        screen.queryByRole('button', { name: '再次发送English' }),
       ).not.toBeInTheDocument();
     });
 
@@ -463,7 +463,7 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets });
 
       await user.click(screen.getByRole('button', { name: 'English' }));
-      await user.type(screen.getByLabelText('Name'), '!');
+      await user.type(screen.getByLabelText('名称'), '!');
       await user.keyboard('{Escape}');
 
       expect(screen.queryByLabelText('Name')).not.toBeInTheDocument();
@@ -486,7 +486,7 @@ describe('promptPanel', () => {
       const { props } = renderPanel({ presets, presetsDialogOpen: true });
 
       await user.click(
-        within(screen.getByRole('dialog')).getByRole('button', { name: 'New prompt' }),
+        within(screen.getByRole('dialog')).getByRole('button', { name: '新建提示词' }),
       );
 
       expect(props.onAddPreset).toHaveBeenCalledWith(
@@ -500,7 +500,7 @@ describe('promptPanel', () => {
 
       const manager = screen.getByRole('dialog');
       await user.click(within(manager).getByRole('button', { name: /English/u }));
-      await user.type(within(manager).getByLabelText('Name'), '!');
+      await user.type(within(manager).getByLabelText('名称'), '!');
       await user.click(within(manager).getByRole('button', { name: /English/u }));
 
       expect(props.onChangePreset).toHaveBeenCalledWith(
@@ -515,14 +515,14 @@ describe('promptPanel', () => {
 
       const manager = screen.getByRole('dialog');
       await user.click(within(manager).getByRole('button', { name: /English/u }));
-      await user.click(within(manager).getByRole('button', { name: 'Delete' }));
+      await user.click(within(manager).getByRole('button', { name: '删除' }));
 
       const confirmation = await screen.findByRole('dialog', {
         name: 'Delete English?',
       });
       expect(confirmation).toHaveTextContent('permanently deleted');
       expect(props.onRemovePreset).not.toHaveBeenCalled();
-      await user.click(within(confirmation).getByRole('button', { name: 'Cancel' }));
+      await user.click(within(confirmation).getByRole('button', { name: '取消' }));
 
       expect(props.onRemovePreset).not.toHaveBeenCalled();
     });
@@ -533,14 +533,14 @@ describe('promptPanel', () => {
 
       const manager = screen.getByRole('dialog');
       await user.click(within(manager).getByRole('button', { name: /English/u }));
-      await user.click(within(manager).getByRole('button', { name: 'Delete' }));
+      await user.click(within(manager).getByRole('button', { name: '删除' }));
 
       const confirmation = await screen.findByRole('dialog', {
         name: 'Delete English?',
       });
       expect(props.onRemovePreset).not.toHaveBeenCalled();
       await user.click(
-        within(confirmation).getByRole('button', { name: 'Delete permanently' }),
+        within(confirmation).getByRole('button', { name: '永久删除' }),
       );
 
       expect(props.onRemovePreset).toHaveBeenCalledWith('english');

@@ -28,7 +28,7 @@ describe('dEFAULT_WEBSITES', () => {
   it('switches the everyday sites on and leaves the rest for the settings window', () => {
     expect(
       DEFAULT_WEBSITES.filter((website) => website.enabled).map((website) => website.id),
-    ).toStrictEqual(['claude', 'chatgpt', 'gemini', 'deepseek']);
+    ).toStrictEqual(['muse', 'claude', 'chatgpt', 'gemini', 'deepseek']);
   });
 });
 

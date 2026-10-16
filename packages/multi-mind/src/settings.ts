@@ -12,7 +12,7 @@ export type PromptEditorKind = 'markdown' | 'plain';
 
 export const PROMPT_EDITOR_OPTIONS = [
   { value: 'markdown', label: 'Markdown' },
-  { value: 'plain', label: 'Plain text' },
+  { value: 'plain', label: '纯文本' },
 ] as const satisfies readonly { value: PromptEditorKind; label: string }[];
 
 /** Delays offered before an unfocused chat window releases its rebuildable caches. */

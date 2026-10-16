@@ -135,33 +135,33 @@ describe('settings window', () => {
   it('renders the application', async () => {
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: 'Settings' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '设置' })).toBeInTheDocument();
     expect(await screen.findByText('claude')).toBeInTheDocument();
   });
 
   it('lists a row per site, with the prompt box settings above them', async () => {
     render(<App />);
 
-    expect(screen.getByLabelText('Text box size')).toBeInTheDocument();
-    expect(screen.getByLabelText('Auto shrink')).toBeInTheDocument();
-    expect(screen.getByLabelText('Auto shrink size')).toBeInTheDocument();
+    expect(screen.getByLabelText('输入框大小')).toBeInTheDocument();
+    expect(screen.getByLabelText('自动收缩')).toBeInTheDocument();
+    expect(screen.getByLabelText('自动收缩大小')).toBeInTheDocument();
 
-    expect(await screen.findByRole('switch', { name: 'Enable claude' })).toBeChecked();
-    expect(screen.getByRole('switch', { name: 'Enable chatgpt' })).toBeInTheDocument();
+    expect(await screen.findByRole('switch', { name: '启用claude' })).toBeChecked();
+    expect(screen.getByRole('switch', { name: '启用chatgpt' })).toBeInTheDocument();
   });
 
   it('starts the prompt box on the markdown editor', async () => {
     render(<App />);
 
-    expect(await screen.findByLabelText('Editor')).toHaveTextContent('Markdown');
+    expect(await screen.findByLabelText('编辑器')).toHaveTextContent('Markdown');
   });
 
   it('switches the prompt box to the plain editor', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(await screen.findByLabelText('Editor'));
-    await user.click(await screen.findByRole('option', { name: 'Plain text' }));
+    await user.click(await screen.findByLabelText('编辑器'));
+    await user.click(await screen.findByRole('option', { name: '纯文本' }));
 
     await waitFor(() => {
       expect(settingsSave).toHaveBeenCalledWith({ promptEditor: 'plain' });
@@ -172,7 +172,7 @@ describe('settings window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByLabelText('Auto shrink'));
+    await user.click(screen.getByLabelText('自动收缩'));
 
     await waitFor(() => {
       expect(settingsSave).toHaveBeenCalledWith({ autoShrink: false });
@@ -182,14 +182,14 @@ describe('settings window', () => {
   it('starts with the update check on', async () => {
     render(<App />);
 
-    expect(await screen.findByLabelText('Check for updates automatically')).toBeChecked();
+    expect(await screen.findByLabelText('自动检查更新')).toBeChecked();
   });
 
   it('switches the update check off, and counts as having been asked', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(await screen.findByLabelText('Check for updates automatically'));
+    await user.click(await screen.findByLabelText('自动检查更新'));
 
     await waitFor(() => {
       expect(settingsSave).toHaveBeenCalledWith({
@@ -203,7 +203,7 @@ describe('settings window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(await screen.findByRole('switch', { name: 'Enable claude' }));
+    await user.click(await screen.findByRole('switch', { name: '启用claude' }));
 
     const websites = await lastSavedWebsites();
     expect(websites.map((website) => website.id)).toStrictEqual(['claude', 'chatgpt']);
@@ -240,7 +240,7 @@ describe('settings window', () => {
       await screen.findByRole('button', { expanded: false, name: /claude/u }),
     );
 
-    expect(screen.getByLabelText('Use the built-in settings')).toBeChecked();
+    expect(screen.getByLabelText('使用内置设置')).toBeChecked();
     expect(screen.queryByLabelText('URL')).not.toBeInTheDocument();
     expect(screen.queryByLabelText('Name')).not.toBeInTheDocument();
     // The row still shows the built-in definition rather than what was typed.
@@ -259,7 +259,7 @@ describe('settings window', () => {
     await user.click(
       await screen.findByRole('button', { expanded: false, name: /claude/u }),
     );
-    await user.click(screen.getByLabelText('Use the built-in settings'));
+    await user.click(screen.getByLabelText('使用内置设置'));
 
     expect(await screen.findByLabelText('URL')).toHaveValue('https://mine.test/');
   });
@@ -274,7 +274,7 @@ describe('settings window', () => {
     await user.click(
       await screen.findByRole('button', { expanded: false, name: /claude/u }),
     );
-    await user.click(screen.getByLabelText('Use the built-in settings'));
+    await user.click(screen.getByLabelText('使用内置设置'));
 
     const websites = await lastSavedWebsites();
     expect(websites[0]?.useDefaults).toBe(false);
@@ -286,20 +286,20 @@ describe('settings window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: 'Add site' }));
+    await user.click(screen.getByRole('button', { name: '添加站点' }));
 
-    expect(screen.queryByLabelText('Use the built-in settings')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('使用内置设置')).not.toBeInTheDocument();
   });
 
   it('adds a blank site, already open for editing', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: 'Add site' }));
+    await user.click(screen.getByRole('button', { name: '添加站点' }));
 
     const websites = await lastSavedWebsites();
     expect(websites).toHaveLength(3);
-    expect(screen.getByLabelText('Name')).toHaveValue('');
+    expect(screen.getByLabelText('名称')).toHaveValue('');
   });
 
   it('removes a site once the removal is confirmed', async () => {
@@ -309,10 +309,10 @@ describe('settings window', () => {
     await user.click(
       await screen.findByRole('button', { expanded: false, name: /claude/u }),
     );
-    await user.click(screen.getByRole('button', { name: 'Remove site' }));
+    await user.click(screen.getByRole('button', { name: '删除站点' }));
 
     const dialog = await findConfirmation();
-    await user.click(within(dialog).getByRole('button', { name: 'Remove' }));
+    await user.click(within(dialog).getByRole('button', { name: '删除' }));
 
     const websites = await lastSavedWebsites();
     expect(websites.map((website) => website.id)).toStrictEqual(['chatgpt']);
@@ -327,7 +327,7 @@ describe('settings window', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText('Text box size')).toHaveTextContent('60%');
+      expect(screen.getByLabelText('输入框大小')).toHaveTextContent('60%');
     });
   });
 
@@ -336,7 +336,7 @@ describe('settings window', () => {
       render(<App />);
 
       expect(await screen.findByLabelText('Folder')).toHaveValue(DEFAULT_DIRECTORY);
-      expect(screen.getByText(`${DEFAULT_DIRECTORY} (default)`)).toBeInTheDocument();
+      expect(screen.getByText(`${DEFAULT_DIRECTORY}（默认）`)).toBeInTheDocument();
     });
 
     it('fills the box from the native folder picker', async () => {
@@ -344,10 +344,10 @@ describe('settings window', () => {
       locationBrowse.mockResolvedValue('D:\\Multi Mind');
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Browse' }));
+      await user.click(await screen.findByRole('button', { name: '浏览' }));
 
       await waitFor(() => {
-        expect(screen.getByLabelText('Folder')).toHaveValue('D:\\Multi Mind');
+        expect(screen.getByLabelText('文件夹')).toHaveValue('D:\\Multi Mind');
       });
     });
 
@@ -358,12 +358,12 @@ describe('settings window', () => {
       const folder = await screen.findByLabelText('Folder');
       await user.clear(folder);
       await user.type(folder, 'D:\\Multi Mind');
-      await user.click(screen.getByRole('button', { name: 'Save location' }));
+      await user.click(screen.getByRole('button', { name: '保存位置' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenCalledWith('D:\\Multi Mind', {});
       });
-      expect(await screen.findByText(/has been moved/u)).toBeInTheDocument();
+      expect(await screen.findByText(/已移动到该文件夹/u)).toBeInTheDocument();
     });
 
     it('asks before creating a folder that is not there', async () => {
@@ -374,11 +374,11 @@ describe('settings window', () => {
       }));
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
       expect(dialog).toHaveTextContent('does not exist');
-      await user.click(within(dialog).getByRole('button', { name: 'Create folder' }));
+      await user.click(within(dialog).getByRole('button', { name: '创建文件夹' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenLastCalledWith(DEFAULT_DIRECTORY, { create: true });
@@ -390,10 +390,10 @@ describe('settings window', () => {
       locationSet.mockResolvedValue({ status: 'missing', directory: 'D:\\Multi Mind' });
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
-      await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+      await user.click(within(dialog).getByRole('button', { name: '取消' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenCalledTimes(1);
@@ -408,11 +408,11 @@ describe('settings window', () => {
       }));
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
       expect(dialog).toHaveTextContent('already has a settings file');
-      await user.click(within(dialog).getByRole('button', { name: 'Overwrite them' }));
+      await user.click(within(dialog).getByRole('button', { name: '覆盖它们' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenLastCalledWith(DEFAULT_DIRECTORY, {
@@ -429,11 +429,11 @@ describe('settings window', () => {
       }));
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
       await user.click(
-        within(dialog).getByRole('button', { name: 'Keep those settings' }),
+        within(dialog).getByRole('button', { name: '保留这些设置' }),
       );
 
       await waitFor(() => {
@@ -441,7 +441,7 @@ describe('settings window', () => {
           conflict: 'adopt',
         });
       });
-      expect(await screen.findByText(/already in that folder/u)).toBeInTheDocument();
+      expect(await screen.findByText(/已有的设置文件/u)).toBeInTheDocument();
     });
 
     it('leaves both settings files alone when the conflict is not answered', async () => {
@@ -452,10 +452,10 @@ describe('settings window', () => {
       });
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
-      await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+      await user.click(within(dialog).getByRole('button', { name: '取消' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenCalledTimes(1);
@@ -471,7 +471,7 @@ describe('settings window', () => {
       });
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Save location' }));
+      await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       expect(
         await screen.findByText('That folder cannot be written to.'),
@@ -483,7 +483,7 @@ describe('settings window', () => {
       locationGet.mockResolvedValue(makeLocation('D:\\Multi Mind'));
       render(<App />);
 
-      await user.click(await screen.findByRole('button', { name: 'Use default' }));
+      await user.click(await screen.findByRole('button', { name: '使用默认' }));
 
       await waitFor(() => {
         expect(locationReset).toHaveBeenCalledWith({});
@@ -495,7 +495,7 @@ describe('settings window', () => {
 
       expect(await screen.findByLabelText('Folder')).toBeInTheDocument();
       expect(
-        screen.queryByRole('button', { name: 'Use default' }),
+        screen.queryByRole('button', { name: '使用默认' }),
       ).not.toBeInTheDocument();
     });
   });

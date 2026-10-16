@@ -42,6 +42,15 @@ function seed(website: Omit<WebsiteInfo, 'id' | 'useDefaults'>): WebsiteInfo {
 
 export const DEFAULT_WEBSITES: readonly WebsiteInfo[] = [
   seed({
+    name: 'muse',
+    url: 'https://muse.ai/',
+    // Best-effort selectors for the Muse web app chat composer; if group-send
+    // does not fire on the Muse tab, adjust them in the settings window.
+    inputSelector: '[contenteditable="true"]',
+    enabled: true,
+    buttonSelector: 'button[type="submit"]',
+  }),
+  seed({
     name: 'claude',
     url: 'https://claude.ai/new',
     inputSelector: '[contenteditable]',

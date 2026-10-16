@@ -114,13 +114,13 @@ describe('main window', () => {
   it('renders the menu strip and the prompt panel', async () => {
     render(<App />);
 
-    expect(screen.getByRole('button', { name: 'New Chat' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Reset Layout' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'More options' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '新对话' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '重置布局' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '更多选项' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Settings' })).not.toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '发送' })).toBeInTheDocument();
     expect(
-      await screen.findByPlaceholderText(/Ask every enabled model/u),
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
     ).toBeInTheDocument();
 
     await waitFor(() => {
@@ -139,7 +139,7 @@ describe('main window', () => {
     render(<App />);
 
     // Radix opens menus on pointerdown, which jsdom does not model; Enter does it.
-    screen.getByRole('button', { name: 'More options' }).focus();
+    screen.getByRole('button', { name: '更多选项' }).focus();
     await user.keyboard('{Enter}');
     await user.click(await screen.findByRole('menuitem', { name: 'Settings' }));
 
@@ -150,7 +150,7 @@ describe('main window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    screen.getByRole('button', { name: 'More options' }).focus();
+    screen.getByRole('button', { name: '更多选项' }).focus();
     await user.keyboard('{Enter}');
     await user.click(await screen.findByRole('menuitem', { name: 'Prompts' }));
 
@@ -166,7 +166,7 @@ describe('main window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: 'New Window' }));
+    await user.click(screen.getByRole('button', { name: '新窗口' }));
 
     expect(newWindow).toHaveBeenCalledTimes(1);
   });
@@ -234,7 +234,7 @@ describe('main window', () => {
     });
 
     await user.type(
-      await screen.findByPlaceholderText(/Ask every enabled model/u),
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
       'hello',
     );
 
@@ -254,7 +254,7 @@ describe('main window', () => {
     const { container } = render(<App />);
 
     expect(
-      await screen.findByPlaceholderText(/Ask every enabled model/u),
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
     ).toBeInTheDocument();
     expect(container.querySelector('.EasyMDEContainer')).toBeNull();
   });
@@ -263,9 +263,9 @@ describe('main window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    const textbox = await screen.findByPlaceholderText(/Ask every enabled model/u);
+    const textbox = await screen.findByPlaceholderText(/一次性问所有已启用的模型/u);
     await user.type(textbox, 'first prompt');
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     expect(textbox).toHaveValue('');
 
@@ -283,10 +283,10 @@ describe('main window', () => {
     render(<App />);
 
     await user.type(
-      await screen.findByPlaceholderText(/Ask every enabled model/u),
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
       'hello',
     );
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
     await waitFor(() => expect(guestRun).toHaveBeenCalled());
 
     const script = guestRun.mock.calls[0]?.[1] ?? '';
@@ -303,7 +303,7 @@ describe('main window', () => {
       }),
     );
 
-    expect(await screen.findByRole('alert')).toHaveTextContent('Selector not found');
+    expect(await screen.findByRole('alert')).toHaveTextContent('未找到选择器');
     await user.click(
       screen.getByRole('button', { name: 'Dismiss chatgpt prompt error' }),
     );
@@ -319,10 +319,10 @@ describe('main window', () => {
     await waitForPanes();
 
     await user.type(
-      await screen.findByPlaceholderText(/Ask every enabled model/u),
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
       'hello',
     );
-    await user.click(screen.getByRole('button', { name: 'Conversation' }));
+    await user.click(screen.getByRole('button', { name: '对话' }));
     await user.click(
       within(await screen.findByRole('dialog')).getByRole('button', { name: /claude/iu }),
     );
@@ -361,7 +361,7 @@ describe('main window', () => {
     render(<App />);
     await waitForPanes();
 
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     await waitFor(() => {
       expect(guestRun).toHaveBeenCalledTimes(1);
@@ -392,11 +392,11 @@ describe('main window', () => {
     );
     render(<App />);
     await waitForPanes();
-    const textbox = screen.getByPlaceholderText(/Ask every enabled model/u);
+    const textbox = screen.getByPlaceholderText(/一次性问所有已启用的模型/u);
 
     const submit = async (text: string) => {
       await user.type(textbox, text);
-      await user.click(screen.getByRole('button', { name: 'Submit' }));
+      await user.click(screen.getByRole('button', { name: '发送' }));
     };
 
     await submit('first');
@@ -406,7 +406,7 @@ describe('main window', () => {
     await user.click(screen.getByRole('button', { name: 'Send Terse again' }));
     await submit('third');
     await submit('fourth');
-    await user.click(screen.getByRole('button', { name: 'New Chat' }));
+    await user.click(screen.getByRole('button', { name: '新对话' }));
     expect(
       screen.queryByRole('button', { name: 'Send Terse again' }),
     ).not.toBeInTheDocument();
@@ -447,15 +447,15 @@ describe('main window', () => {
     );
     render(<App />);
     await waitForPanes();
-    const textbox = screen.getByPlaceholderText(/Ask every enabled model/u);
+    const textbox = screen.getByPlaceholderText(/一次性问所有已启用的模型/u);
     const checkbox = screen.getByRole('checkbox', { name: 'Use Terse' });
 
     await user.type(textbox, 'first');
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
     await user.click(checkbox);
     await user.click(checkbox);
     await user.type(textbox, 'second');
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     await waitFor(() => {
       expect(guestRun).toHaveBeenCalledTimes(2);
@@ -497,8 +497,8 @@ describe('main window', () => {
     render(<App />);
     await waitForPanes();
 
-    await user.type(screen.getByPlaceholderText(/Ask every enabled model/u), 'ask');
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.type(screen.getByPlaceholderText(/一次性问所有已启用的模型/u), 'ask');
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     await waitFor(() => {
       expect(guestRun).toHaveBeenCalledTimes(1);
@@ -585,7 +585,7 @@ describe('main window', () => {
     await user.click(screen.getByRole('checkbox', { name: 'Use Chat only' }));
     expect(settingsSave).toHaveBeenCalledWith({ activePrompts: ['kept', 'chat'] });
     settingsSave.mockClear();
-    await user.click(screen.getByRole('button', { name: 'New Chat' }));
+    await user.click(screen.getByRole('button', { name: '新对话' }));
 
     expect(settingsSave).toHaveBeenCalledExactlyOnceWith({ activePrompts: ['kept'] });
   });
@@ -603,10 +603,10 @@ describe('main window', () => {
     await waitForPanes();
 
     await user.type(
-      screen.getByPlaceholderText(/Ask every enabled model/u),
+      screen.getByPlaceholderText(/一次性问所有已启用的模型/u),
       'Compare these',
     );
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
     await waitFor(() => {
       expect(searchAddConversation).toHaveBeenCalledWith(7, 'claude');
       expect(searchAddConversation).toHaveBeenCalledWith(7, 'chatgpt');
@@ -656,7 +656,7 @@ describe('main window', () => {
       },
     ]);
     render(<App />);
-    await screen.findByPlaceholderText(/Ask every enabled model/u);
+    await screen.findByPlaceholderText(/一次性问所有已启用的模型/u);
 
     await user.type(
       screen.getByRole('textbox', { name: 'Search saved prompts' }),
@@ -701,7 +701,7 @@ describe('main window', () => {
 
     // Focusing the empty box lists recent prompts.
     await user.click(screen.getByRole('textbox', { name: 'Search saved prompts' }));
-    expect(await screen.findByText('Recent chats')).toBeInTheDocument();
+    expect(await screen.findByText('最近对话')).toBeInTheDocument();
     expect(searchPrompts).toHaveBeenCalledWith('');
     // The captured title, without the provider name, then the first prompt.
     expect(
@@ -710,10 +710,10 @@ describe('main window', () => {
       }),
     ).toHaveLength(1);
     expect(
-      screen.getByRole('button', { name: 'Open gemini conversation' }),
+      screen.getByRole('button', { name: '打开gemini的对话' }),
     ).toBeDisabled();
 
-    await user.click(screen.getByRole('button', { name: 'Open chatgpt conversation' }));
+    await user.click(screen.getByRole('button', { name: '打开chatgpt的对话' }));
     await waitFor(() => {
       expect(guestNavigate).toHaveBeenCalledWith('chatgpt', 'https://chatgpt.com/c/2');
     });
@@ -734,7 +734,7 @@ describe('main window', () => {
     render(<App />);
     await waitForPanes();
 
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     expect(guestRun).not.toHaveBeenCalled();
   });
@@ -766,9 +766,9 @@ describe('main window', () => {
     render(<App />);
     await waitForPanes();
 
-    const textbox = screen.getByPlaceholderText(/Ask every enabled model/u);
+    const textbox = screen.getByPlaceholderText(/一次性问所有已启用的模型/u);
     await user.type(textbox, 'first prompt');
-    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    await user.click(screen.getByRole('button', { name: '发送' }));
 
     await user.click(textbox);
     await user.keyboard('{Control>}{Shift>}z{/Shift}{/Control}');
@@ -780,7 +780,7 @@ describe('main window', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: 'New prompt' }));
+    await user.click(screen.getByRole('button', { name: '新建提示词' }));
 
     expect(settingsSave).toHaveBeenCalledWith({
       prompts: [expect.objectContaining({ name: '', value: '', location: 'end' })],
@@ -835,7 +835,7 @@ describe('main window', () => {
 
     it('sends nothing at all while no site is open', async () => {
       render(<App />);
-      await screen.findByPlaceholderText(/Ask every enabled model/u);
+      await screen.findByPlaceholderText(/一次性问所有已启用的模型/u);
 
       const panes = await waitForPanes();
 
@@ -850,7 +850,7 @@ describe('main window', () => {
       render(<App />);
       await waitForPanes();
 
-      await user.click(screen.getByRole('button', { name: 'New Chat' }));
+      await user.click(screen.getByRole('button', { name: '新对话' }));
 
       expect(guestNavigate).toHaveBeenCalledWith('claude', 'https://claude.ai/new');
     });
