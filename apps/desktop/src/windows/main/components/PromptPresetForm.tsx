@@ -135,6 +135,7 @@ export function PromptPresetForm({ preset, onChange, onRemove }: PromptPresetFor
       title: `删除${promptPresetLabel({ ...preset, ...draftRef.current })}？`,
       description: '该提示词将被永久删除，无法撤销。',
       confirmText: '永久删除',
+      cancelText: '取消',
       variant: 'destructive',
       onConfirm: () => {
         if (saveTimerRef.current !== null) {

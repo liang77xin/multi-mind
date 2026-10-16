@@ -134,7 +134,7 @@ async fn offer(app: &AppHandle, update: tauri_plugin_updater::Update) {
 
     app.dialog()
         .message(format!(
-发现新版本 Multi Mind {version}，现在下载安装吗？安装完成后应用将重启。
+            "发现新版本 Multi Mind {version}，现在下载安装吗？安装完成后应用将重启。",
         ))
         .title("有可用更新")
         .buttons(MessageDialogButtons::OkCancelCustom(

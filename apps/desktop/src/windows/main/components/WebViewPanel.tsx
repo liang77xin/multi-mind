@@ -58,9 +58,7 @@ export function WebViewPanel({
           className="flex h-7 shrink-0 items-center justify-between gap-2 border-t border-red-300 bg-red-50 px-2 text-xs text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300"
         >
           <span className="truncate">
-            {promptError.kind === 'insert'
-              ? '无法输入提示词'
-              : '未找到选择器'}
+            {promptError.kind === 'insert' ? '无法输入提示词' : '未找到选择器'}
           </span>
           <button
             type="button"
