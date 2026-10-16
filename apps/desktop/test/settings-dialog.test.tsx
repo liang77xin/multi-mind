@@ -72,7 +72,7 @@ function App() {
 
 /** A confirmation asked over the settings dialog. */
 async function findConfirmation(): Promise<HTMLElement> {
-  return screen.findByRole('dialog', { name: (name) => name !== 'Settings' });
+  return screen.findByRole('dialog', { name: (name) => name !== '设置' });
 }
 
 function stub(overrides: Partial<AppSettings> = {}): AppSettings {
@@ -242,7 +242,7 @@ describe('settings window', () => {
 
     expect(screen.getByLabelText('使用内置设置')).toBeChecked();
     expect(screen.queryByLabelText('URL')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Name')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('名称')).not.toBeInTheDocument();
     // The row still shows the built-in definition rather than what was typed.
     expect(
       screen.getByRole('button', { expanded: true, name: /claude/u }),
@@ -335,7 +335,7 @@ describe('settings window', () => {
     it('shows where the data is kept', async () => {
       render(<App />);
 
-      expect(await screen.findByLabelText('Folder')).toHaveValue(DEFAULT_DIRECTORY);
+      expect(await screen.findByLabelText('文件夹')).toHaveValue(DEFAULT_DIRECTORY);
       expect(screen.getByText(`${DEFAULT_DIRECTORY}（默认）`)).toBeInTheDocument();
     });
 
@@ -355,7 +355,7 @@ describe('settings window', () => {
       const user = userEvent.setup();
       render(<App />);
 
-      const folder = await screen.findByLabelText('Folder');
+      const folder = await screen.findByLabelText('文件夹');
       await user.clear(folder);
       await user.type(folder, 'D:\\Multi Mind');
       await user.click(screen.getByRole('button', { name: '保存位置' }));
@@ -377,7 +377,7 @@ describe('settings window', () => {
       await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
-      expect(dialog).toHaveTextContent('does not exist');
+      expect(dialog).toHaveTextContent('还不存在');
       await user.click(within(dialog).getByRole('button', { name: '创建文件夹' }));
 
       await waitFor(() => {
@@ -411,7 +411,7 @@ describe('settings window', () => {
       await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
-      expect(dialog).toHaveTextContent('already has a settings file');
+      expect(dialog).toHaveTextContent('已有设置文件');
       await user.click(within(dialog).getByRole('button', { name: '覆盖它们' }));
 
       await waitFor(() => {
@@ -432,9 +432,7 @@ describe('settings window', () => {
       await user.click(await screen.findByRole('button', { name: '保存位置' }));
 
       const dialog = await findConfirmation();
-      await user.click(
-        within(dialog).getByRole('button', { name: '保留这些设置' }),
-      );
+      await user.click(within(dialog).getByRole('button', { name: '保留这些设置' }));
 
       await waitFor(() => {
         expect(locationSet).toHaveBeenLastCalledWith(DEFAULT_DIRECTORY, {
@@ -493,10 +491,8 @@ describe('settings window', () => {
     it('hides that way back while the file is already in the default folder', async () => {
       render(<App />);
 
-      expect(await screen.findByLabelText('Folder')).toBeInTheDocument();
-      expect(
-        screen.queryByRole('button', { name: '使用默认' }),
-      ).not.toBeInTheDocument();
+      expect(await screen.findByLabelText('文件夹')).toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: '使用默认' })).not.toBeInTheDocument();
     });
   });
 });

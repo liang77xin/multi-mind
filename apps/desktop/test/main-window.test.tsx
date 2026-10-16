@@ -117,7 +117,7 @@ describe('main window', () => {
     expect(screen.getByRole('button', { name: '新对话' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '重置布局' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '更多选项' })).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Settings' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '设置' })).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: '发送' })).toBeInTheDocument();
     expect(
       await screen.findByPlaceholderText(/一次性问所有已启用的模型/u),
@@ -141,9 +141,9 @@ describe('main window', () => {
     // Radix opens menus on pointerdown, which jsdom does not model; Enter does it.
     screen.getByRole('button', { name: '更多选项' }).focus();
     await user.keyboard('{Enter}');
-    await user.click(await screen.findByRole('menuitem', { name: 'Settings' }));
+    await user.click(await screen.findByRole('menuitem', { name: '设置' }));
 
-    expect(await screen.findByRole('dialog', { name: 'Settings' })).toBeInTheDocument();
+    expect(await screen.findByRole('dialog', { name: '设置' })).toBeInTheDocument();
   });
 
   it('opens the prompt list from the overflow menu', async () => {
@@ -152,9 +152,9 @@ describe('main window', () => {
 
     screen.getByRole('button', { name: '更多选项' }).focus();
     await user.keyboard('{Enter}');
-    await user.click(await screen.findByRole('menuitem', { name: 'Prompts' }));
+    await user.click(await screen.findByRole('menuitem', { name: '提示词' }));
 
-    expect(await screen.findByRole('dialog', { name: 'Prompts' })).toBeInTheDocument();
+    expect(await screen.findByRole('dialog', { name: '提示词' })).toBeInTheDocument();
   });
 
   /*
@@ -304,9 +304,7 @@ describe('main window', () => {
     );
 
     expect(await screen.findByRole('alert')).toHaveTextContent('未找到选择器');
-    await user.click(
-      screen.getByRole('button', { name: 'Dismiss chatgpt prompt error' }),
-    );
+    await user.click(screen.getByRole('button', { name: '忽略chatgpt的提示词错误' }));
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
@@ -400,15 +398,15 @@ describe('main window', () => {
     };
 
     await submit('first');
-    expect(screen.getByRole('checkbox', { name: 'Use Terse' })).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: '使用Terse' })).toBeChecked();
     expect(settingsSave).not.toHaveBeenCalled();
     await submit('second');
-    await user.click(screen.getByRole('button', { name: 'Send Terse again' }));
+    await user.click(screen.getByRole('button', { name: '再次发送Terse' }));
     await submit('third');
     await submit('fourth');
     await user.click(screen.getByRole('button', { name: '新对话' }));
     expect(
-      screen.queryByRole('button', { name: 'Send Terse again' }),
+      screen.queryByRole('button', { name: '再次发送Terse' }),
     ).not.toBeInTheDocument();
     await submit('fifth');
 
@@ -448,7 +446,7 @@ describe('main window', () => {
     render(<App />);
     await waitForPanes();
     const textbox = screen.getByPlaceholderText(/一次性问所有已启用的模型/u);
-    const checkbox = screen.getByRole('checkbox', { name: 'Use Terse' });
+    const checkbox = screen.getByRole('checkbox', { name: '使用Terse' });
 
     await user.type(textbox, 'first');
     await user.click(screen.getByRole('button', { name: '发送' }));
@@ -506,7 +504,7 @@ describe('main window', () => {
     const script = String(guestRun.mock.calls[0]?.[1]);
     expect(script).toContain('Answer as JSON.');
     expect(script).not.toContain('Be terse.');
-    expect(screen.getByRole('checkbox', { name: 'Use Terse' })).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: '使用Terse' })).toBeChecked();
   });
 
   it('unticks chat-only presets on startup and again in a new window', async () => {
@@ -539,22 +537,22 @@ describe('main window', () => {
     const firstWindow = render(<App />);
 
     expect(
-      await screen.findByRole('checkbox', { name: 'Use Chat only' }),
+      await screen.findByRole('checkbox', { name: '使用Chat only' }),
     ).not.toBeChecked();
-    expect(screen.getByRole('checkbox', { name: 'Use Kept' })).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: '使用Kept' })).toBeChecked();
     expect(settingsSave).toHaveBeenCalledExactlyOnceWith({ activePrompts: ['kept'] });
 
-    await user.click(screen.getByRole('checkbox', { name: 'Use Chat only' }));
-    expect(screen.getByRole('checkbox', { name: 'Use Chat only' })).toBeChecked();
+    await user.click(screen.getByRole('checkbox', { name: '使用Chat only' }));
+    expect(screen.getByRole('checkbox', { name: '使用Chat only' })).toBeChecked();
     firstWindow.unmount();
     settingsSave.mockClear();
 
     render(<App />);
 
     expect(
-      await screen.findByRole('checkbox', { name: 'Use Chat only' }),
+      await screen.findByRole('checkbox', { name: '使用Chat only' }),
     ).not.toBeChecked();
-    expect(screen.getByRole('checkbox', { name: 'Use Kept' })).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: '使用Kept' })).toBeChecked();
     expect(settingsSave).toHaveBeenCalledExactlyOnceWith({ activePrompts: ['kept'] });
   });
 
@@ -582,7 +580,7 @@ describe('main window', () => {
     await waitForPanes();
 
     expect(settingsSave).not.toHaveBeenCalled();
-    await user.click(screen.getByRole('checkbox', { name: 'Use Chat only' }));
+    await user.click(screen.getByRole('checkbox', { name: '使用Chat only' }));
     expect(settingsSave).toHaveBeenCalledWith({ activePrompts: ['kept', 'chat'] });
     settingsSave.mockClear();
     await user.click(screen.getByRole('button', { name: '新对话' }));
@@ -659,7 +657,7 @@ describe('main window', () => {
     await screen.findByPlaceholderText(/一次性问所有已启用的模型/u);
 
     await user.type(
-      screen.getByRole('textbox', { name: 'Search saved prompts' }),
+      screen.getByRole('textbox', { name: '搜索已保存的提示词' }),
       'Compare',
     );
     await user.click(await screen.findByRole('button', { name: /Compare these/u }));
@@ -700,7 +698,7 @@ describe('main window', () => {
     await waitForPanes();
 
     // Focusing the empty box lists recent prompts.
-    await user.click(screen.getByRole('textbox', { name: 'Search saved prompts' }));
+    await user.click(screen.getByRole('textbox', { name: '搜索已保存的提示词' }));
     expect(await screen.findByText('最近对话')).toBeInTheDocument();
     expect(searchPrompts).toHaveBeenCalledWith('');
     // The captured title, without the provider name, then the first prompt.
@@ -709,9 +707,7 @@ describe('main window', () => {
         name: /^Turbo\s*Cache turbo in CI\s*↳ And in GitHub Actions\?$/u,
       }),
     ).toHaveLength(1);
-    expect(
-      screen.getByRole('button', { name: '打开gemini的对话' }),
-    ).toBeDisabled();
+    expect(screen.getByRole('button', { name: '打开gemini的对话' })).toBeDisabled();
 
     await user.click(screen.getByRole('button', { name: '打开chatgpt的对话' }));
     await waitFor(() => {
@@ -719,7 +715,7 @@ describe('main window', () => {
     });
     expect(guestNavigate).not.toHaveBeenCalledWith('claude', 'https://claude.ai/chat/1');
 
-    await user.click(screen.getByRole('textbox', { name: 'Search saved prompts' }));
+    await user.click(screen.getByRole('textbox', { name: '搜索已保存的提示词' }));
     await user.keyboard('{Enter}');
     await waitFor(() => {
       expect(guestNavigate).toHaveBeenCalledWith('claude', 'https://claude.ai/chat/1');
@@ -785,7 +781,7 @@ describe('main window', () => {
     expect(settingsSave).toHaveBeenCalledWith({
       prompts: [expect.objectContaining({ name: '', value: '', location: 'end' })],
     });
-    expect(await screen.findByLabelText('Name')).toBeInTheDocument();
+    expect(await screen.findByLabelText('名称')).toBeInTheDocument();
   });
 
   it('ticks a preset the settings file already holds', async () => {
@@ -808,7 +804,7 @@ describe('main window', () => {
     );
     render(<App />);
 
-    await user.click(await screen.findByRole('checkbox', { name: 'Use Terse' }));
+    await user.click(await screen.findByRole('checkbox', { name: '使用Terse' }));
 
     expect(settingsSave).toHaveBeenCalledWith({ activePrompts: ['terse'] });
   });
