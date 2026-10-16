@@ -1,5 +1,7 @@
 # Multi Mind
 
+> **定制版 fork**（基于 [ccpu/multi-mind](https://github.com/ccpu/multi-mind)）：界面已汉化为简体中文，默认加入并启用 Muse（muse.ai）站点。
+
 One prompt box driving several AI chat sites side by side. Type once, send to
 Claude, ChatGPT, Gemini, DeepSeek and the rest at the same time, and read the
 answers next to each other.
