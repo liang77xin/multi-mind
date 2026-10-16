@@ -1,3 +1,43 @@
+# 1.0.0 (2026-10-16)
+
+
+### Bug Fixes
+
+* **commands:** allow unused mutable variable on non-Windows platforms ([41f37de](https://github.com/liang77xin/multi-mind/commit/41f37de2abb9241c986f6fce763bc74c5a36ea01))
+* **settings:** update default browser memory saving setting ([26b5fba](https://github.com/liang77xin/multi-mind/commit/26b5fba88f22a0883bb136e3d9c5f940eec5a88a))
+* 仓库地址指向上游导致无法发版，改为 fork 地址 ([da6eda2](https://github.com/liang77xin/multi-mind/commit/da6eda27f521c61bfc4f0cdb0f32a543731ff1c0))
+* 修复 CI（格式/测试断言）并补齐确认弹窗中文按钮 (1/2) ([4f086c4](https://github.com/liang77xin/multi-mind/commit/4f086c480a5ec3974f485b6fcf9d53ff35be12f4))
+* 修复 CI（格式/测试断言）并补齐确认弹窗中文按钮 (2/3) ([48c4407](https://github.com/liang77xin/multi-mind/commit/48c44073d6608f8020d7d578afe54ac1760e3e6b))
+* 修复 CI（格式/测试断言）并补齐确认弹窗中文按钮 (3/4) ([ef2e7e5](https://github.com/liang77xin/multi-mind/commit/ef2e7e5211f6ad63bb83fa5b5fff8467ffc2eb16))
+* 修复 CI（格式/测试断言）并补齐确认弹窗中文按钮 (4/4) ([fc0bfce](https://github.com/liang77xin/multi-mind/commit/fc0bfce78c7856d1ea7307ed33766f7319ff2886))
+
+
+### Features
+
+* **browser:** enhance browser memory management settings ([a392961](https://github.com/liang77xin/multi-mind/commit/a3929614ab6dbef7fdce1af8dae6e2fd065ce25f))
+* build Multi Mind desktop workspace ([159d249](https://github.com/liang77xin/multi-mind/commit/159d2495c5aa83e68096bb9f4638e5f149b504f0))
+* **build:** add signing support for updater artifacts ([dca6bfd](https://github.com/liang77xin/multi-mind/commit/dca6bfd6d561b7484f0016c2f686c8b454afc6ce))
+* **desktop:** improve prompt presets and search history ([c121b80](https://github.com/liang77xin/multi-mind/commit/c121b80e27b6ed1053ac0d2e94530d05944b9f2b))
+* **desktop:** reduce embedded browser memory use ([66b88a0](https://github.com/liang77xin/multi-mind/commit/66b88a06a53dead1e8f306a1c60649378812361d))
+* **download:** add download event handling and notifications ([bfdc777](https://github.com/liang77xin/multi-mind/commit/bfdc77738c04cef0877a85a3f5220ebd09dc05c9))
+* **guest:** enhance popup handling and introduce script support ([9e1273c](https://github.com/liang77xin/multi-mind/commit/9e1273c620aec4485ca7b0a27a2af2f981e30621))
+* **main-window:** add support for opening new windows ([4dc6c06](https://github.com/liang77xin/multi-mind/commit/4dc6c0635cb3dfe99feb5d475dbfbcdabf1cc04c))
+* **PresetSwitch:** enhance description for clarity ([daea2e7](https://github.com/liang77xin/multi-mind/commit/daea2e7501b2f4494c7e5a9d219afe12856ab7c2))
+* **prompt:** enhance error handling for prompt submissions ([5097b6b](https://github.com/liang77xin/multi-mind/commit/5097b6beb443c0910276785652234220b7cbc9d5))
+* **prompt:** enhance PromptPreset functionality and UI ([56b69bf](https://github.com/liang77xin/multi-mind/commit/56b69bff98f8d419c116bb2ea70002089aaad65f))
+* **prompt:** implement use-once preset functionality ([0ad7155](https://github.com/liang77xin/multi-mind/commit/0ad7155ec515d1f8cb13c882448c95fb24c1d020))
+* **prompt:** refactor PromptPresetForm and PromptPresetRow to use onChange callback ([8f98ca7](https://github.com/liang77xin/multi-mind/commit/8f98ca72df96d1eca9ba0c1abaa94b1edead80f0))
+* **prompts:** add prompt management features and UI enhancements ([365f7ab](https://github.com/liang77xin/multi-mind/commit/365f7ab7202322ddc2f34ec3561d4e72977e11d1))
+* **prompts:** send use-once presets once per chat ([e0fd225](https://github.com/liang77xin/multi-mind/commit/e0fd22588721fda025c8ebfa9bbdf8ed321c3298))
+* **search:** implement search history functionality ([a8f217b](https://github.com/liang77xin/multi-mind/commit/a8f217b9f0564fe5914c740aca16fd6f503fd679))
+* **search:** update terminology and structure for chat handling ([05060c2](https://github.com/liang77xin/multi-mind/commit/05060c29a6edac3a02224dca9de705da6ef3aee2))
+* **settings:** add memory management options and settings integration ([c1ee4cf](https://github.com/liang77xin/multi-mind/commit/c1ee4cfa979798296ff91147c275d0c704f44781))
+* **settings:** introduce DataFolderCard component and update settings location terminology ([ffe0691](https://github.com/liang77xin/multi-mind/commit/ffe069175476679562b1d5bfcbe9b8b5bf68267c))
+* **tests:** add conditional compilation for browser arguments on Windows ([74f3f02](https://github.com/liang77xin/multi-mind/commit/74f3f02901b03ebf77830dcf5e79926f86c07e1e))
+* **updater:** enhance update decision logic and add tests ([9e47f6d](https://github.com/liang77xin/multi-mind/commit/9e47f6d1c1cba3d04848159d797692c673c5d28b))
+* **vite:** add @pixpilot/vite-plugin-source-inspector dependency ([4670807](https://github.com/liang77xin/multi-mind/commit/467080716bf13f19ec1236e0a89f2c5fe8516137))
+* 中文界面并默认加入 Muse 站点 ([bf95c6c](https://github.com/liang77xin/multi-mind/commit/bf95c6c32ffe88c611665bf99543f046c4a5b7d2))
+
 # [1.16.0](https://github.com/ccpu/multi-mind/compare/v1.15.0...v1.16.0) (2026-10-12)
 
 
