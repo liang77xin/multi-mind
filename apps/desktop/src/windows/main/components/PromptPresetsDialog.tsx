@@ -80,17 +80,16 @@ export function PromptPresetsDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent {...promptSurface} className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Prompts</DialogTitle>
+          <DialogTitle>提示词</DialogTitle>
           <DialogDescription>
-            Ready-made text to tick on above the prompt box. A ticked prompt is added
-            before or after whatever you type, as its own setting says.
+            勾选后显示在输入框上方的现成文本。勾选的提示词会按各自的设置，加在你输入内容的前面或后面。
           </DialogDescription>
         </DialogHeader>
 
         <DialogBody>
           {presets.length === 0 ? (
             <p className="py-6 text-center text-sm text-muted-foreground">
-              No prompts yet. Add one and it appears above the prompt box.
+              还没有提示词。添加一条，它会显示在输入框上方。
             </p>
           ) : (
             <ul className="flex flex-col gap-2">
@@ -118,7 +117,7 @@ export function PromptPresetsDialog({
         <DialogFooter>
           <Button variant="outline" size="sm" onClick={handleAdd}>
             <Plus />
-            New prompt
+            新建提示词
           </Button>
         </DialogFooter>
       </DialogContent>

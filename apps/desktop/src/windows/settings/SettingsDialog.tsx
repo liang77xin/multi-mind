@@ -31,8 +31,8 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
       <DialogContent className="w-full sm:max-w-3xl">
         <DialogHeader className="flex-row items-center justify-between pr-8">
           <div className="flex flex-col gap-1">
-            <DialogTitle>Settings</DialogTitle>
-            <DialogDescription>Changes are saved as you make them.</DialogDescription>
+            <DialogTitle>设置</DialogTitle>
+            <DialogDescription>修改会即时保存。</DialogDescription>
           </div>
           <ThemeModeToggleButton />
         </DialogHeader>

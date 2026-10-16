@@ -109,9 +109,9 @@ export function SearchHistory({ websites, onOpenConversations }: SearchHistoryPr
   const loaded = resultsQuery === query;
   let message = '';
   if (error) {
-    message = 'Search failed. Try again.';
+    message = '搜索失败，请重试。';
   } else if (loaded && results.length === 0) {
-    message = recent ? 'No saved prompts yet.' : 'No saved prompts found.';
+    message = recent ? '还没有已保存的提示词。' : '未找到已保存的提示词。';
   }
 
   return (
@@ -120,7 +120,7 @@ export function SearchHistory({ websites, onOpenConversations }: SearchHistoryPr
         <div ref={anchorRef} className="relative w-56 min-w-32 shrink">
           <Search className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            aria-label="Search saved prompts"
+            aria-label="搜索已保存的提示词"
             value={query}
             onChange={(event) => {
               setQuery(event.target.value);
@@ -129,7 +129,7 @@ export function SearchHistory({ websites, onOpenConversations }: SearchHistoryPr
             }}
             onFocus={() => setOpen(true)}
             onKeyDown={handleKeyDown}
-            placeholder="Search prompts…"
+            placeholder="搜索提示词…"
             className="h-8 pl-8"
           />
         </div>
@@ -156,7 +156,7 @@ export function SearchHistory({ websites, onOpenConversations }: SearchHistoryPr
         )}
         {!error && recent && results.length > 0 && (
           <p className="px-3 pt-2 pb-1 text-xs font-medium text-muted-foreground">
-            Recent chats
+            最近对话
           </p>
         )}
         {!error &&

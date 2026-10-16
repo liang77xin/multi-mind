@@ -18,7 +18,7 @@ import { PromptPresetBar } from './PromptPresetBar';
 import { PromptPresetsDialog } from './PromptPresetsDialog';
 import { SendToOneButton } from './SendToOneButton';
 
-const PLACEHOLDER = 'Ask every enabled model at once…  (ctrl+enter to send)';
+const PLACEHOLDER = '一次性问所有已启用的模型…（ctrl+回车发送）';
 
 interface PromptPanelProps {
   editorRef: RefObject<PromptEditorHandle | null>;
@@ -160,7 +160,7 @@ export function PromptPanel({
       <div className="flex w-44 shrink-0 flex-col-reverse gap-2">
         <Button className="w-full" onClick={onSubmit}>
           <SendHorizontal />
-          Submit
+          发送
         </Button>
         <SendToOneButton websites={websites} onSubmitTo={onSubmitTo} />
       </div>

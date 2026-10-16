@@ -119,14 +119,14 @@ export function PromptPresetBadge({
           <Checkbox
             className={cn('size-3.5', used && !overridden && 'opacity-50')}
             checked={checked}
-            aria-label={`Use ${label}`}
+            aria-label={`使用${label}`}
             onCheckedChange={handleToggle}
           />
           {used && (
             <button
               type="button"
-              aria-label={`Send ${label} again`}
-              title={`Send ${label} again with the next message`}
+              aria-label={`再次发送${label}`}
+              title={`随下一条消息再次发送${label}`}
               className="text-muted-foreground hover:text-foreground"
               onClick={handleReuse}
             >
@@ -137,7 +137,7 @@ export function PromptPresetBadge({
             <button
               type="button"
               title={
-                used ? `${label} was sent in this chat. Click to edit.` : `Edit ${label}` //
+                used ? `${label}已在此对话中发送，点击编辑。` : `编辑${label}` //
               }
               className={cn('max-w-40 truncate', used && !overridden && 'opacity-50')}
             >

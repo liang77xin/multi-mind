@@ -20,11 +20,11 @@ export function useDownloadToasts(): void {
         const name = fileName(event);
 
         if (event.state === 'started') {
-          toast.info({ title: 'Downloading', description: name });
+          toast.info({ title: '正在下载', description: name });
         } else if (event.state === 'finished') {
-          toast.success({ title: 'Download complete', description: event.path ?? name });
+          toast.success({ title: '下载完成', description: event.path ?? name });
         } else {
-          toast.error({ title: 'Download failed', description: name });
+          toast.error({ title: '下载失败', description: name });
         }
       }),
     [],

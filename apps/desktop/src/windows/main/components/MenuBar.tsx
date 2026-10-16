@@ -60,34 +60,34 @@ export function MenuBar({
         {/* `modal={false}` so closing the menu does not fight the settings dialog for focus. */}
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon-sm" aria-label="More options">
+            <Button variant="ghost" size="icon-sm" aria-label="更多选项">
               <EllipsisVertical />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="w-48">
             <DropdownMenuItem onSelect={onOpenSettings}>
               <Settings />
-              Settings
+              设置
             </DropdownMenuItem>
             <DropdownMenuItem onSelect={onOpenPrompts}>
               <Library />
-              Prompts
+              提示词
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
         <Button variant="ghost" size="sm" onClick={onReload}>
           <MessageCircle />
-          New Chat
+          新对话
         </Button>
 
         <Button variant="ghost" size="sm" onClick={onResetLayout}>
           <Columns3 />
-          Reset Layout
+          重置布局
         </Button>
         <Button variant="ghost" size="sm" onClick={onNewWindow}>
           <Copy />
-          New Window
+          新窗口
         </Button>
       </div>
 
@@ -95,7 +95,7 @@ export function MenuBar({
 
       <div className="flex min-w-0 items-center justify-end gap-1">
         {websites.map((website) => {
-          const label = website.name === '' ? '(unnamed)' : website.name.toUpperCase();
+          const label = website.name === '' ? '(未命名)' : website.name.toUpperCase();
 
           return (
             <ToggleButton

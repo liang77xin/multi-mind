@@ -66,8 +66,8 @@ export function NewPromptPresetButton({
       <PopoverAnchor asChild>
         <button
           type="button"
-          aria-label="New prompt"
-          title="New prompt"
+          aria-label="新建提示词"
+          title="新建提示词"
           className={className}
           onClick={handleAdd}
         >

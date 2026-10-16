@@ -133,7 +133,7 @@ export function PromptPresetBar({
         <Popover>
           <PopoverTrigger
             className={ROW_BUTTON_CLASS}
-            aria-label={`Show ${String(hidden.length)} more prompts`}
+            aria-label={`显示其余 ${String(hidden.length)} 条提示词`}
           >
             <MoreHorizontal className="size-4" />
           </PopoverTrigger>

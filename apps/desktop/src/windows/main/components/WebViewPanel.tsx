@@ -59,12 +59,12 @@ export function WebViewPanel({
         >
           <span className="truncate">
             {promptError.kind === 'insert'
-              ? 'Could not enter prompt'
-              : 'Selector not found'}
+              ? '无法输入提示词'
+              : '未找到选择器'}
           </span>
           <button
             type="button"
-            aria-label={`Dismiss ${website.name} prompt error`}
+            aria-label={`忽略${website.name}的提示词错误`}
             className="shrink-0 rounded p-0.5 hover:bg-red-100 focus-visible:outline-2 dark:hover:bg-red-900"
             onClick={() => onDismissError(website.id)}
           >

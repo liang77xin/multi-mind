@@ -113,14 +113,12 @@ async fn ask(app: &AppHandle) -> bool {
 
     app.dialog()
         .message(
-            "Multi Mind can ask GitHub for a newer release each time it starts, and offer to \
-             install one when there is. Nothing but the version is sent. You can change this \
-             later under Settings.",
+            "Multi Mind 每次启动时都可以向 GitHub 查询新版本，有新版本时会提示安装。只会发送版本号，您可以稍后在设置中更改。",
         )
-        .title("Check for updates?")
+        .title("检查更新？")
         .buttons(MessageDialogButtons::OkCancelCustom(
-            "Check automatically".into(),
-            "Do not check".into(),
+            "自动检查".into(),
+            "不检查".into(),
         ))
         .show(move |answer| {
             let _ = sender.blocking_send(answer);
@@ -136,13 +134,12 @@ async fn offer(app: &AppHandle, update: tauri_plugin_updater::Update) {
 
     app.dialog()
         .message(format!(
-            "Multi Mind {version} is available. Download and install it now? The app will \
-             restart when it is done."
+发现新版本 Multi Mind {version}，现在下载安装吗？安装完成后应用将重启。
         ))
-        .title("An update is available")
+        .title("有可用更新")
         .buttons(MessageDialogButtons::OkCancelCustom(
-            "Install".into(),
-            "Not now".into(),
+            "安装".into(),
+            "稍后".into(),
         ))
         .show(move |answer| {
             let _ = sender.blocking_send(answer);

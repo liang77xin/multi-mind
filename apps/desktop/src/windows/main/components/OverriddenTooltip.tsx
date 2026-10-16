@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { clearOfBrowsers } from '../hooks/useOverlayPresence';
 import { promptSurface } from './prompt-surface';
 
-const NAME_LIST = new Intl.ListFormat('en', { type: 'conjunction' });
+const NAME_LIST = new Intl.ListFormat('zh-CN', { type: 'conjunction' });
 
 function overriddenMessage(overriddenBy: readonly PromptPreset[]): string {
   const names = NAME_LIST.format(
@@ -14,8 +14,8 @@ function overriddenMessage(overriddenBy: readonly PromptPreset[]): string {
   );
 
   return overriddenBy.length === 1
-    ? `Not sent while ${names} is ticked: it overrides the other prompts.`
-    : `Not sent while ${names} are ticked: they override the other prompts.`;
+    ? `已勾选${names}，它会覆盖其他提示词，因此本次不发送。`
+    : `已勾选${names}，它们会覆盖其他提示词，因此本次不发送。`;
 }
 
 interface OverriddenTooltipProps {

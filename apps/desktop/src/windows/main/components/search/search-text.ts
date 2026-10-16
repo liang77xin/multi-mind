@@ -105,18 +105,18 @@ export function formatAge(createdAt: string, now = Date.now()): string {
   }
   const minutes = Math.floor((now - time) / MINUTE_MS);
   if (minutes < 1) {
-    return 'just now';
+    return '刚刚';
   }
   if (minutes < MINUTES_PER_HOUR) {
-    return `${minutes}m ago`;
+    return `${minutes}分钟前`;
   }
   const hours = Math.floor(minutes / MINUTES_PER_HOUR);
   if (hours < HOURS_PER_DAY) {
-    return `${hours}h ago`;
+    return `${hours}小时前`;
   }
   const days = Math.floor(hours / HOURS_PER_DAY);
   if (days < DAYS_AS_AGE) {
-    return `${days}d ago`;
+    return `${days}天前`;
   }
   return new Date(time).toLocaleDateString();
 }

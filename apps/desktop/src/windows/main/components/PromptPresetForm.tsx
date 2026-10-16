@@ -132,9 +132,9 @@ export function PromptPresetForm({ preset, onChange, onRemove }: PromptPresetFor
 
   const handleRemove = useCallback(() => {
     showConfirmDialog({
-      title: `Delete ${promptPresetLabel({ ...preset, ...draftRef.current })}?`,
-      description: 'This prompt will be permanently deleted. This cannot be undone.',
-      confirmText: 'Delete permanently',
+      title: `删除${promptPresetLabel({ ...preset, ...draftRef.current })}？`,
+      description: '该提示词将被永久删除，无法撤销。',
+      confirmText: '永久删除',
       variant: 'destructive',
       onConfirm: () => {
         if (saveTimerRef.current !== null) {
@@ -151,29 +151,29 @@ export function PromptPresetForm({ preset, onChange, onRemove }: PromptPresetFor
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor={`${preset.id}-name`}>Name</Label>
+        <Label htmlFor={`${preset.id}-name`}>名称</Label>
         <Input
           id={`${preset.id}-name`}
           value={draft.name}
-          placeholder="Answer in English"
+          placeholder="用英文回答"
           spellCheck={false}
           onChange={handleChangeName}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor={`${preset.id}-value`}>Text</Label>
+        <Label htmlFor={`${preset.id}-value`}>文本</Label>
         <Textarea
           id={`${preset.id}-value`}
           value={draft.value}
           rows={4}
-          placeholder="Text to add to the prompt"
+          placeholder="要添加到提示词的文本"
           onChange={handleChangeValue}
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor={`${preset.id}-location`}>Insert at</Label>
+        <Label htmlFor={`${preset.id}-location`}>插入位置</Label>
         <Select
           id={`${preset.id}-location`}
           contentProps={LOCATION_CONTENT_PROPS}
@@ -185,24 +185,24 @@ export function PromptPresetForm({ preset, onChange, onRemove }: PromptPresetFor
 
       <PresetSwitch
         id={`${preset.id}-send-once`}
-        label="Use once per chat"
-        description="Goes out with the next message only, then stays ticked but greyed out until New Chat or a new window. Click ↻ on it to send it once more in this chat."
+        label="每轮对话只用一次"
+        description="仅随下一条消息发送，之后保持勾选但置灰，直到新对话或新窗口。点击 ↻ 可在本次对话中再发送一次。"
         checked={draft.sendOnce}
         onCheckedChange={handleChangeSendOnce}
       />
 
       <PresetSwitch
         id={`${preset.id}-untick-on-new-chat`}
-        label="Untick on New Chat"
-        description="Stays ticked for this chat only. New Chat, a new window, or launching the app unticks it; tick it again to use it in the next chat."
+        label="新对话时取消勾选"
+        description="仅在本次对话保持勾选。新对话、新窗口或重启应用时会取消勾选；下次对话需重新勾选。"
         checked={draft.untickOnNewChat}
         onCheckedChange={handleChangeUntickOnNewChat}
       />
 
       <PresetSwitch
         id={`${preset.id}-override-others`}
-        label="Override other prompts"
-        description="While this is ticked, it is the only prompt added. The other ticked prompts are greyed out and left out until you untick it."
+        label="覆盖其他提示词"
+        description="勾选后只添加这一条提示词，其他已勾选的提示词会置灰并跳过，直到取消勾选。"
         checked={draft.overrideOthers}
         onCheckedChange={handleChangeOverrideOthers}
       />
@@ -215,7 +215,7 @@ export function PromptPresetForm({ preset, onChange, onRemove }: PromptPresetFor
           onClick={handleRemove}
         >
           <Trash2 />
-          Delete
+          删除
         </Button>
       </div>
     </div>

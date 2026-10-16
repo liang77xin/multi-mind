@@ -23,10 +23,10 @@ interface SearchResultItemProps {
 
 function describe(conversation: SearchConversation, website: WebsiteInfo | undefined) {
   if (website === undefined) {
-    return 'Provider unavailable';
+    return '服务商不可用';
   }
   if (conversation.url === '') {
-    return 'Waiting for the conversation address';
+    return '等待获取对话地址';
   }
   return conversation.title || conversation.url;
 }
@@ -112,7 +112,7 @@ export function SearchResultItem({
                 {index > 0 && ', '}
                 <button
                   type="button"
-                  aria-label={`Open ${name} conversation`}
+                  aria-label={`打开${name}的对话`}
                   title={describe(conversation, website)}
                   disabled={!openable.includes(conversation)}
                   onClick={() => onOpen([conversation])}

@@ -75,7 +75,7 @@ export function PromptPresetRow({
           <Checkbox
             className={cn(dimUsed && 'opacity-50')}
             checked={checked}
-            aria-label={`Use ${label}`}
+            aria-label={`使用${label}`}
             onCheckedChange={handleToggle}
           />
 
@@ -104,12 +104,12 @@ export function PromptPresetRow({
             <Button
               variant="ghost"
               size="sm"
-              aria-label={`Send ${label} again`}
-              title={`${label} was sent in this chat. Send it again with the next message.`}
+              aria-label={`再次发送${label}`}
+              title={`${label}已在此对话中发送，随下一条消息再次发送。`}
               onClick={handleReuse}
             >
               <RotateCcw />
-              Send again
+              再次发送
             </Button>
           )}
         </div>
