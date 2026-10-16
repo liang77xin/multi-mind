@@ -6,13 +6,13 @@
   "description": "Multi Mind — one prompt, many AI chat sites side by side. A Tauri desktop app.",
   "author": "Mo Doaie <m.doaie@hotmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/ccpu/multi-mind",
+  "homepage": "https://github.com/liang77xin/multi-mind",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccpu/multi-mind.git"
+    "url": "https://github.com/liang77xin/multi-mind.git"
   },
   "bugs": {
-    "url": "https://github.com/ccpu/multi-mind/issues"
+    "url": "https://github.com/liang77xin/multi-mind/issues"
   },
   "keywords": [
     "ai",
